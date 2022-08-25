@@ -5,11 +5,19 @@ import requests
 import sys
 import os
 import socket
+import pyfiglet
+
+def banner():
+	initialBanner = pyfiglet.figlet_format('NIX')
+	print(initialBanner)
+
+try:
+	banner()
+except:
+	print('There is a problem getting the banner ready :P')
 
 print('')
-print('#########################################')
-print('======== NIX - All in one script ========')
-print('#########################################')
+print('======== The all-in-one script ツ========')
 print('')
 print('')
 
@@ -24,7 +32,7 @@ parser.add_argument('-w', help='Select the wordlist to use in the tests.')
 
 def bannerGrabbing():
 	print('')
-	print('######################################################################')
+	print('#' * 63)
 	print(f'Performing Banner Grabbing in {sys.argv[1]} in port {sys.argv[2]}:\n')
 
 	mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -32,7 +40,7 @@ def bannerGrabbing():
 	banner = mysocket.recv(1024)
 
 	print(f'{banner}')
-	print('######################################################################')
+	print('#' * 63)
 	print('')
 
 try:
@@ -40,15 +48,15 @@ try:
 	print('')
 except:
 	print('Not able to do the Banner Grabbing in this port.')
-	print('######################################################################')
+	print('#' * 63)
 	print('')
 
 # Subdomains finder
 
-with open('endpoints.txt') as f: s = f.read()
+with open('../endpoints.txt') as f: s = f.read()
 
 def subdomainFinder():
-	print('##############################################################')
+	print('#' * 63)
 	print(f'Performing bruteforce to find subdomains in {sys.argv[1]}:\n')
 
 	for endpoint in s:
@@ -58,17 +66,44 @@ def subdomainFinder():
 
 try:
 	subdomainFinder()
-	print('##############################################################')
+	print('#' * 63)
 	print('')
 except:
 	print('Not able to enumerate the subdomains in this host.')
-	print('##############################################################')
+	print('#' * 63)
 	print('')
 
 # Port scanning
 
-#print(f'Executing a minimum port scanning in {}:\n',sys.argv[1])
+def portScanning():
+	print('')
+	print('#' * 63)
+	print(f'Executing a minimum port scanning in {sys.argv[1]}:\n')
 
+	target = socket.gethostbyname(sys.argv[1])
+
+	try:
+		for port in range(1,65535):
+			mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			socket.setdefaulttimeout(1)
+			conn = mysocket.connect_ex((target, port))
+			if conn == 0:
+				print(f'{port} - OPEN')
+			mysocket.close()
+	except socket.gaierror:
+		print('\nSomething went wrong with the hostname.')
+		sys.exit()
+	except socket.error:
+		print('\nThe server is not responding.')
+		sys.exit()
+try:
+	portScanning()
+	print('#' * 63)
+	print('')
+except:
+	print('Not able to perform a port scanning.')
+	print('#' * 63)
+	print('')
 
 # DIR finder
 
