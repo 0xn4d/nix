@@ -47,29 +47,7 @@ try:
 	bannerGrabbing()
 	print('')
 except:
-	print('Not able to do the Banner Grabbing in this port.')
-	print('#' * 63)
-	print('')
-
-# Subdomains finder
-
-with open('../endpoints.txt') as f: s = f.read()
-
-def subdomainFinder():
-	print('#' * 63)
-	print(f'Performing bruteforce to find subdomains in {sys.argv[1]}:\n')
-
-	for endpoint in s:
-		request = requests.get(f'{sys.argv[1]}/{endpoint}')
-		if request == 0:
-			print(f'{endpoint} - 200')
-
-try:
-	subdomainFinder()
-	print('#' * 63)
-	print('')
-except:
-	print('Not able to enumerate the subdomains in this host.')
+	print('Not able to perform the Banner Grabbing on this port.')
 	print('#' * 63)
 	print('')
 
@@ -78,7 +56,7 @@ except:
 def portScanning():
 	print('')
 	print('#' * 63)
-	print(f'Executing a minimum port scanning in {sys.argv[1]}:\n')
+	print(f'Performing a minimum port scanning on {sys.argv[1]}:\n')
 
 	target = socket.gethostbyname(sys.argv[1])
 
@@ -88,7 +66,7 @@ def portScanning():
 			socket.setdefaulttimeout(1)
 			conn = mysocket.connect_ex((target, port))
 			if conn == 0:
-				print(f'{port} - OPEN')
+				print(f'[+] {port} - OPEN')
 			mysocket.close()
 	except socket.gaierror:
 		print('\nSomething went wrong with the hostname.')
@@ -107,13 +85,13 @@ except:
 
 # DIR finder
 
-def dirFinder():
-	print('')
-	print('#' * 63)
-	print(f'Executing bruteforce to find directories in {sys.argv[1]}:\n')
-	
+print('')
+print('#' * 63)
+print(f'Performing bruteforce to find directories in {sys.argv[1]}:\n')
+
+def dirFinder(url):	
 	try:
-		return requests.get('https://' + sys.argv[1])
+		return requests.get('http://' + url)
 
 	except requests.exceptions.ConnectionError:
 		pass
@@ -126,6 +104,29 @@ for line in file:
 	response = dirFinder(fullUrl)
 	if response:
 		print('[+] - Found at: ' + fullUrl)
+		
+# Subdomains finder
+
+print('#' * 63)
+print(f'Performing bruteforce to find subdomains on {sys.argv[1]}:\n')
+
+def subdomainFinder(domainname, subdomains):
+	for subdomain in subdomains:
+		subdomain = subdomain.strip('\n')
+		fullSubUrl = f'{subdomain}.{sys.argv[1]}'
+		try:
+			requests.get(fullSubUrl)
+			print(f'[+] Found at: {fullSubUrl}')
+		except requests.ConnectionError:
+			pass
+
+domainname = sys.argv[1]
+
+with open('sys.argv[3]','r') as file:
+	name = file.read()
+	subdomains = name.splitlines()
+
+subdomainFinder(domainname, subdomains)
 
 # Implement the Hunter API key - get possible email address related to the domain
 
