@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import argparse
 import requests
 import sys
 import os
@@ -20,13 +19,6 @@ print('')
 print('======== The all-in-one script ツ========')
 print('')
 print('')
-
-parser = argparse.ArgumentParser('./nix.py', description='You can use NIX to get your recon faster.')
-parser.add_argument('-bg', help='Activates the Banner Grabbing.')
-parser.add_argument('-sb', help='Activates the Subdomain Finder.')
-parser.add_argument('-ps', help='Activates the Port Scanning.')
-parser.add_argument('-df', help='Activates the DIR Finder')
-parser.add_argument('-w', help='Select the wordlist to use in the tests.')
 
 # Banner Grabbing
 
@@ -107,6 +99,8 @@ for line in file:
 		
 # Subdomains finder
 
+print('')
+print('')
 print('#' * 63)
 print(f'Performing bruteforce to find subdomains on {sys.argv[1]}:\n')
 
@@ -130,11 +124,19 @@ subdomainFinder(domainname, subdomains)
 
 # Implement the Hunter API key - get possible email address related to the domain
 
+print('')
+print('')
+print('#' * 63)
+print('Performing a email address search using Hunter API.')
+
 
 
 # Implement the HaveIBeenPwned - query to get possible breaches that includes the email addresses found in the Hunter search
 
-
+print('')
+print('')
+print('#' * 63)
+print('Performing leaks search in HaveIBeenPwned using the email address found in Hunter search.')
 
 
 
