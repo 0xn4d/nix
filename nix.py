@@ -107,6 +107,35 @@ except:
 
 # DIR finder
 
-#print(f'Executing bruteforce to find directories in {}:\n',sys.argv[1])
+def dirFinder():
+	print('')
+	print('#' * 63)
+	print(f'Executing bruteforce to find directories in {sys.argv[1]}:\n')
+	
+	try:
+		return requests.get('https://' + sys.argv[1])
+
+	except requests.exceptions.ConnectionError:
+		pass
+
+targetUrl = sys.argv[1]
+file = open('sys.argv[3]', 'r')
+for line in file:
+	line = line.strip('\n')
+	fullUrl = targetUrl + '/' + line
+	response = dirFinder(fullUrl)
+	if response:
+		print('[+] - Found at: ' + fullUrl)
+
+# Implement the Hunter API key - get possible email address related to the domain
+
+
+
+# Implement the HaveIBeenPwned - query to get possible breaches that includes the email addresses found in the Hunter search
+
+
+
+
+
 
 
