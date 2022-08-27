@@ -129,16 +129,18 @@ print('')
 print('#' * 63)
 print('Performing a email address search using Hunter API.')
 
+def hunterAPI():
+	hunter_api = os.getenv('hunter_api')
 
+	hunterUrl = f'https://api,hunter.io/v2/domain-search?domain='+sys.argv[1]+'&api_key='+hunter_api
+	try:
+		requests.get(hunterUrl)
+	except:
+		pass
 
-# Implement the HaveIBeenPwned - query to get possible breaches that includes the email addresses found in the Hunter search
-
-print('')
-print('')
-print('#' * 63)
-print('Performing leaks search in HaveIBeenPwned using the email address found in Hunter search.')
-
-
-
-
-
+try:
+	print('')
+	print('#' * 63)
+	hunterAPI()
+except:
+	print('Not able to perform the Hunter search.')
