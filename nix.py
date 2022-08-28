@@ -89,7 +89,7 @@ def dirFinder(url):
 		pass
 
 targetUrl = sys.argv[1]
-file = open('sys.argv[3]', 'r')
+file = open(sys.argv[3], 'r')
 for line in file:
 	line = line.strip('\n')
 	fullUrl = targetUrl + '/' + line
@@ -107,16 +107,16 @@ print(f'Performing bruteforce to find subdomains on {sys.argv[1]}:\n')
 def subdomainFinder(domainname, subdomains):
 	for subdomain in subdomains:
 		subdomain = subdomain.strip('\n')
-		fullSubUrl = f'{subdomain}.{sys.argv[1]}'
+		fullSubUrl = f'http://{subdomain}.{sys.argv[1]}'
 		try:
 			requests.get(fullSubUrl)
 			print(f'[+] Found at: {fullSubUrl}')
 		except requests.ConnectionError:
 			pass
 
-domainname = sys.argv[1]
+domainname = 'http://'+sys.argv[1]
 
-with open('sys.argv[3]','r') as file:
+with open(sys.argv[3],'r') as file:
 	name = file.read()
 	subdomains = name.splitlines()
 
@@ -132,9 +132,10 @@ print('Performing a email address search using Hunter API.')
 def hunterAPI():
 	hunter_api = os.getenv('hunter_api')
 
-	hunterUrl = f'https://api,hunter.io/v2/domain-search?domain='+sys.argv[1]+'&api_key='+hunter_api
+	hunterUrl = f'https://api.hunter.io/v2/domain-search?domain={sys.argv[1]}&api_key={hunter_api}'
 	try:
-		requests.get(hunterUrl)
+		response = requests.get(hunterUrl)
+		print(response.json())
 	except:
 		pass
 
@@ -144,3 +145,5 @@ try:
 	hunterAPI()
 except:
 	print('Not able to perform the Hunter search.')
+	print('#' * 63)
+	print('')
