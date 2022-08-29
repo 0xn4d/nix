@@ -54,24 +54,23 @@ def portScanning():
 
 	target = socket.gethostbyname(sys.argv[1])
 
-	try:
-		for port in range(1,65535):
+	for port in range(1,1024):
+		try:
 			mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			socket.setdefaulttimeout(1)
 			conn = mysocket.connect_ex((target, port))
 			if conn == 0:
 				print(f'[+] {port} - OPEN')
 			mysocket.close()
-	except:
-		pass
-try:
-	portScanning()
-	print('#' * 63)
-	print('')
-except:
-	print('Not able to perform a port scanning.')
-	print('#' * 63)
-	print('')
+		except:
+			print('Not able to perform a port scanning.')
+			print('#' * 63)
+			print('')
+
+portScanning()
+print('#' * 63)
+print('')
+
 
 # DIR finder
 
@@ -95,7 +94,6 @@ for line in file:
 	if response:
 		print('[+] - Found at: ' + fullUrl)
 
-print('')
 print('#' * 63)
 		
 # Subdomains finder
