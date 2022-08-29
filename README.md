@@ -1,15 +1,16 @@
 # nix - all in one script
 
-Nix was designed to perform a rapid recon in a host. The things that this script does are listed below:
+Nix was designed to perform a fast recon in a host. The things that it does are listed below:
 
     1. Banner Grabbing;
     2. Port Scanner;
-    3. Subdomain Finder; and
-    4. Directory Finder.
+    3. Subdomain Finder;
+    4. Directory Finder; and
+    5. Search for possible email addresses using Hunter API (you have to set it as an env. variable)
 
-Besides that, I will implement the script to be able to perform some great - possible - vulnerabilities such as:
+Besides that, I will implement it to be able to look for some vulnerabilities such as:
 
-    1. Subdnomain takeover;
+    1. Subdomain takeover;
     2. SQL Injection;
     3. XSS;
     4. IDOR (maybe, still thinking about it :P); and

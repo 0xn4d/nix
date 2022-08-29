@@ -5,6 +5,9 @@ import sys
 import os
 import socket
 import pyfiglet
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def banner():
 	initialBanner = pyfiglet.figlet_format('NIX')
@@ -33,7 +36,6 @@ def bannerGrabbing():
 
 	print(f'{banner}')
 	print('#' * 63)
-	print('')
 
 try:
 	bannerGrabbing()
@@ -60,12 +62,8 @@ def portScanning():
 			if conn == 0:
 				print(f'[+] {port} - OPEN')
 			mysocket.close()
-	except socket.gaierror:
-		print('\nSomething went wrong with the hostname.')
-		sys.exit()
-	except socket.error:
-		print('\nThe server is not responding.')
-		sys.exit()
+	except:
+		pass
 try:
 	portScanning()
 	print('#' * 63)
@@ -96,6 +94,9 @@ for line in file:
 	response = dirFinder(fullUrl)
 	if response:
 		print('[+] - Found at: ' + fullUrl)
+
+print('')
+print('#' * 63)
 		
 # Subdomains finder
 
@@ -130,9 +131,9 @@ print('#' * 63)
 print('Performing a email address search using Hunter API.')
 
 def hunterAPI():
-	hunter_api = os.getenv('hunter_api')
+	HUNTER_API = os.getenv('HUNTER_API')
 
-	hunterUrl = f'https://api.hunter.io/v2/domain-search?domain={sys.argv[1]}&api_key={hunter_api}'
+	hunterUrl = f'https://api.hunter.io/v2/domain-search?domain={sys.argv[1]}&api_key={HUNTER_API}'
 	try:
 		response = requests.get(hunterUrl)
 		print(response.json())
@@ -141,8 +142,9 @@ def hunterAPI():
 
 try:
 	print('')
-	print('#' * 63)
 	hunterAPI()
+	print('#' * 63)
+	print('')
 except:
 	print('Not able to perform the Hunter search.')
 	print('#' * 63)
