@@ -95,7 +95,7 @@ for line in file:
 		print('[+] - Found at: ' + fullUrl)
 
 print('#' * 63)
-		
+
 # Subdomains finder
 
 print('')
@@ -147,3 +147,16 @@ except:
 	print('Not able to perform the Hunter search.')
 	print('#' * 63)
 	print('')
+
+# -------------------------------------------------------------------------------
+
+# Subdomain Takeover
+
+
+# SQL Injection
+
+
+# XSS Injection
+
+
+# Git Exposed
