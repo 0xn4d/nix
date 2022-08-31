@@ -10,7 +10,7 @@ Nix was designed to perform a fast recon in a host. The things that it does are 
 
 Besides that, I will implement it to be able to look for some vulnerabilities such as:
 
-    1. Subdomain takeover;
+    1. Subdomain Takeover;
     2. SQL Injection;
     3. XSS;
     4. IDOR (maybe, still thinking about it :P); and
@@ -25,7 +25,5 @@ Usage:
 2. Usage:
 
 ```./nix.py host port wordlist```
-
-e.g.: 
 
 ```./nix.py businesscorp.com.br 21 /usr/share/wordlist/dirb/big.txt```
