@@ -3,10 +3,11 @@
 Nix was designed to perform a fast recon in a host. The things that it does are listed below:
 
     1. Banner Grabbing;
-    2. Port Scanner;
-    3. Subdomain Finder;
-    4. Directory Finder; and
-    5. Search for possible email addresses using Hunter API (you have to set it as an env. variable)
+    2. Whois query;
+    3. Port Scanner;
+    4. Subdomain Finder;
+    5. Directory Finder; and
+    6. Search for possible email addresses using Hunter API (you have to set it as an env. variable)
 
 Besides that, I will implement it to be able to look for some vulnerabilities such as:
 
