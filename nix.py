@@ -23,35 +23,6 @@ print('======== The all-in-one script ツ========')
 print('')
 print('')
 
-# Whois
-
-def whois():
-	print('')
-	print('#' * 63)
-	print(f'Performing a Whois search in {sys.argv[1]}')
-
-	ms = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	ms.connect(("whois.iana.org",43))
-	ms.send(sys.argv[1]+"\r\n")
-	ms.recv(1024).split()
-	response = response[19]
-
-	ms1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	ms1.connect((response))
-	ms1.send(sys.argv[1]+"\r\n")
-	response = ms1.recv(1024)
-	print(response)
-
-try:
-	whois()
-	print('#' * 63)
-	print('')
-except:
-	print('Not able to perform whois in this host.')
-	print('#' * 63)
-	print('')
-
-
 # Banner Grabbing
 
 def bannerGrabbing():
@@ -149,11 +120,12 @@ with open(sys.argv[3],'r') as file:
 	subdomains = name.splitlines()
 
 subdomainFinder(domainname, subdomains)
+print('#' * 63)
+print('')
+print('')
 
 # Implement the Hunter API key - get possible email address related to the domain
 
-print('')
-print('')
 print('#' * 63)
 print('Performing a email address search using Hunter API.')
 
