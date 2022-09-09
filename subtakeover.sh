@@ -1,6 +1,9 @@
 #!/bin/bash
 
 echo ""
+echo "subtakeover v2.0"
+
+echo ""
 echo "Testing subdomains..."
 echo ""
 echo "Results:"
