@@ -1,3 +1,13 @@
+pass
+password
+passw
+passwd
+word
+senha
+page
+submit
+login
+senhas
 intranet
 admin
 infra
