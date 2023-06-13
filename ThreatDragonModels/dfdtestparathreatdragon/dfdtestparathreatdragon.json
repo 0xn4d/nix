@@ -74,6 +74,7 @@
                   "threatId": "947288de-c9a3-439e-adf7-7b8435f8bfd0"
                 }
               ],
+              "isWebApplication": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasOpenThreats isInScope"
@@ -115,6 +116,14 @@
                 {
                   "x": 588,
                   "y": 173
+                },
+                {
+                  "x": 610,
+                  "y": 170
+                },
+                {
+                  "x": 640,
+                  "y": 170
                 }
               ],
               "id": "453a7172-f630-4cab-a4ff-afe739631247",
