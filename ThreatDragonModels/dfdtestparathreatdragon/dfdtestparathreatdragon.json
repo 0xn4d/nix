@@ -39,6 +39,39 @@
                   "description": "Na comunicação feita entre o processo 0 e processo 1, pode-se haver um spoofing por causa de blablabla e aquilo e acolá",
                   "mitigation": "para você mitigrag=adjvaidjgaeifjasdoigjaspfjadsoigadfongiorj",
                   "threatId": "acb5a9b8-bf80-40f2-91d6-97afe2b0539f"
+                },
+                {
+                  "ruleId": "ea1adb4d-097d-45a8-8e48-b728a996f487",
+                  "title": "Expediting",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #6:\nUsing speed to violate explicit or implicit assumptions about the application’s normal use to achieve unfair individual gain",
+                  "mitigation": "Defences include providing enforcement of behavioral workflow and anti-automation",
+                  "threatId": "996ef7a6-7e8c-4920-aa2c-64aec2671837"
+                },
+                {
+                  "ruleId": "d97bcb80-f96d-44af-869a-d0441761be05",
+                  "title": "Vulnerability scanning",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #14:\nSystematic enumeration and examination in order to find weaknesses and points where a security vulnerability might exist",
+                  "mitigation": "Defence includes providing anti-automation",
+                  "threatId": "00834798-14c5-4ce3-98fd-9fcc995f90e9"
+                },
+                {
+                  "ruleId": "ce2fe37e-0742-4278-8915-40dc2226150e",
+                  "title": "Denial of Service",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #15:\nUsage may resemble legitimate application usage but leads to exhaustion of resources",
+                  "mitigation": "Mitigation or prevention such as providing backoff, resource management and avoiding forced deadlock",
+                  "threatId": "947288de-c9a3-439e-adf7-7b8435f8bfd0"
                 }
               ],
               "attrs": {
@@ -134,16 +167,51 @@
               "angle": 0,
               "id": "6754a407-4216-4851-9db0-4721efbe2fd6",
               "z": 3,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "ruleId": "ea1adb4d-097d-45a8-8e48-b728a996f487",
+                  "title": "Expediting",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #6:\nUsing speed to violate explicit or implicit assumptions about the application’s normal use to achieve unfair individual gain",
+                  "mitigation": "Defences include providing enforcement of behavioral workflow and anti-automation",
+                  "threatId": "be3cfbe6-9614-45af-be20-94baf49db0f0"
+                },
+                {
+                  "ruleId": "d97bcb80-f96d-44af-869a-d0441761be05",
+                  "title": "Vulnerability scanning",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #14:\nSystematic enumeration and examination in order to find weaknesses and points where a security vulnerability might exist",
+                  "mitigation": "Defence includes providing anti-automation",
+                  "threatId": "0648760f-2124-4a4e-9142-0cebaca2b87f"
+                },
+                {
+                  "ruleId": "ce2fe37e-0742-4278-8915-40dc2226150e",
+                  "title": "Denial of Service",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #15:\nUsage may resemble legitimate application usage but leads to exhaustion of resources",
+                  "mitigation": "Mitigation or prevention such as providing backoff, resource management and avoiding forced deadlock",
+                  "threatId": "0745116f-3893-4f05-8682-8d654c433aa8"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "process 2"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -160,16 +228,51 @@
               "angle": 0,
               "id": "4eece1ae-9749-4c88-8bca-ac97672999d6",
               "z": 4,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "ruleId": "ea1adb4d-097d-45a8-8e48-b728a996f487",
+                  "title": "Expediting",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #6:\nUsing speed to violate explicit or implicit assumptions about the application’s normal use to achieve unfair individual gain",
+                  "mitigation": "Defences include providing enforcement of behavioral workflow and anti-automation",
+                  "threatId": "0d83dfd5-828d-4eab-8151-8d47bac95058"
+                },
+                {
+                  "ruleId": "d97bcb80-f96d-44af-869a-d0441761be05",
+                  "title": "Vulnerability scanning",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #14:\nSystematic enumeration and examination in order to find weaknesses and points where a security vulnerability might exist",
+                  "mitigation": "Defence includes providing anti-automation",
+                  "threatId": "73a0f437-97fd-42e8-b5ab-9559e1b5e8fe"
+                },
+                {
+                  "ruleId": "ce2fe37e-0742-4278-8915-40dc2226150e",
+                  "title": "Denial of Service",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "See OWASP Automated Threat #15:\nUsage may resemble legitimate application usage but leads to exhaustion of resources",
+                  "mitigation": "Mitigation or prevention such as providing backoff, resource management and avoiding forced deadlock",
+                  "threatId": "ce0ff08e-1156-4edc-8c5d-600b66d1dc12"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "process 3"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -186,7 +289,16 @@
               "target": {
                 "id": "4eece1ae-9749-4c88-8bca-ac97672999d6"
               },
-              "vertices": [],
+              "vertices": [
+                {
+                  "x": 778,
+                  "y": 171
+                },
+                {
+                  "x": 943,
+                  "y": 170
+                }
+              ],
               "id": "e1063405-dc49-4113-aa30-f8ceb0382c11",
               "labels": [
                 {
