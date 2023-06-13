@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "title": "dfdtestparathreatdragon",
+    "owner": "daniloalbuqrque",
+    "description": "Uma aplicação que tem código de scanners para ajudar em certificações e bug bounty à priori."
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "diagramateste",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "diagramType": "STRIDE",
+        "id": 0
+      }
+    ],
+    "reviewer": "daniloalbuqrque"
+  }
+}
