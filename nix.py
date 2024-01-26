@@ -10,6 +10,9 @@ from colorama import Fore
 from dotenv import load_dotenv
 from threading import Thread
 import argparse
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 load_dotenv()
 
@@ -59,22 +62,22 @@ def portScanning():
 # DIR finder
 def dirFinder():
 	print(Fore.BLUE + f'[INFO] Performing bruteforce to find directories in {target}:\n')
-	res = requests.get(f'https://{target}')
+	res = requests.get(f'https://{target}', verify=False)
 	if res.status_code == 200:
 		file = open(wordlist, 'r')
-		for line in file:
-			line = line.strip('\n')
-			fullUrl = target + '/' + line
-			try:
-				response = requests.get(f'https://{fullUrl}')
+		try:
+			for line in file:
+				line = line.strip('\n')
+				fullUrl = target + '/' + line
+				response = requests.get(f'https://{fullUrl}', verify=False)
 				if response.status_code == 200:
 					print(Fore.GREEN + f'[FOUND] {fullUrl}')
 				elif response.status_code == 403:
 					print(Fore.YELLOW + f'[FORBIDDEN] {fullUrl}')
 				elif response.status_code == 503:
 					print(Fore.RED + f'[SERVICE ISSUE] {fullUrl}')
-			except:
-				pass
+		except:
+			pass
 	else:
 		print(Fore.RED + '[ERROR] Problems reaching the target.')
 
@@ -88,18 +91,19 @@ def subdomainFinder():
     
 	for subdomain in subdomains:
 		subdomain = subdomain.strip('\n')
-		fullSubUrl = f'http://{subdomain}.{target}/'  
+		fullSubUrl = f'https://{subdomain}.{target}/'  
   
 		try:
-			res = requests.get(fullSubUrl)
+			res = requests.get(fullSubUrl, verify=False)
 			if res.status_code == 200:
 				print(Fore.GREEN + f'[FOUND] {fullSubUrl}')
 			elif res.status_code == 403:
 				print(Fore.RED + f'[FORBIDDEN] {fullSubUrl}')
 			elif res.status_code == 404:
 				print(Fore.YELLOW + f'[NOT FOUND] {fullSubUrl}')
-		except:
-			print(Fore.RED + '[ERROR] Something went wrong while reaching the target.')
+		except requests.exceptions.ConnectionError:
+			print(Fore.RED + "Connection error.")
+			#print(Fore.RED + '[ERROR] Something went wrong while reaching the target.')
 			pass
 
 # Implement the Hunter API key - get possible email addresses related to the domain
@@ -124,10 +128,10 @@ if __name__ == "__main__":
 	parser.add_argument("-t", "--target", help="Your target.")
 	parser.add_argument("-p", "--port", help="Port to perform the banner grabbing.")
 	parser.add_argument("-w", "--wordlist", help="Wordlist to use.")
-	parser.add_argument("-ps", "--port-scan", help="If active, it performs a port scan in range 1,65535.")
-	parser.add_argument("-ds", "--dir-search", help="If active, it performs a directory search using the given wordlist.")
-	parser.add_argument("-sf", "--subdomain-finder", help="If active, it performs a subdomain search.")
-	parser.add_argument("-ht", "--hunter", help="Do not forget to put your API key in the .env file. If active, it performs a Hunter.io search and give the results back in a json format.")
+	parser.add_argument("-ps", "--port-scan", help="If active, it performs a port scan in range 1,65535.", action='store_true')
+	parser.add_argument("-ds", "--dir-search", help="If active, it performs a directory search using the given wordlist.", action='store_true')
+	parser.add_argument("-sf", "--subdomain-finder", help="If active, it performs a subdomain search.", action='store_true')
+	parser.add_argument("-ht", "--hunter", help="Do not forget to put your API key in the .env file. If active, it performs a Hunter.io search and give the results back in a json format.", action='store_true')
 	args = parser.parse_args()
 
 	# variables retrieving arguments values
@@ -138,22 +142,27 @@ if __name__ == "__main__":
 	# calling functions
 	banner()
 
-	bannerGrabbing()
-	print('')
+	if args.port:
+		bannerGrabbing()
+		print('')
 
-	# thread = Thread(target=portScanning)
-	# thread.start()
-	portScanning()
-	print('')
+	if args.port_scan:
+		# thread = Thread(target=portScanning)
+		# thread.start()
+		portScanning()
+		print('')
 
-	dirFinder()
-	print('')
+	if args.dir_search:
+		dirFinder()
+		print('')
 
-	subdomainFinder()
-	print('')
+	if args.subdomain_finder:
+		subdomainFinder()
+		print('')
 
-	hunterAPI()
-	print('')
+	if args.hunter:
+		hunterAPI()
+		print('')
 
 # -------------------------------------------------------------------------------
 
