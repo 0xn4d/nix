@@ -2,7 +2,6 @@
 
 import requests
 import json
-import sys
 import os
 import socket
 import pyfiglet
@@ -163,13 +162,3 @@ if __name__ == "__main__":
 	if args.hunter:
 		hunterAPI()
 		print('')
-
-# -------------------------------------------------------------------------------
-
-# SQL Injection
-
-
-# XSS Injection
-
-
-# Git Exposed
