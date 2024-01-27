@@ -5,7 +5,7 @@
 Nix was designed to perform a fast recon in a host. The things that it does are listed below:
 
     1. Banner Grabbing;
-    2. Port Scanner;
+    2. Port Scanner (1-8088 range);
     3. Directory Finder; and
     4. Search for possible email addresses using Hunter API. Set the API token as an env. variable in a .env file, like:
     
