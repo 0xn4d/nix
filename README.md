@@ -11,14 +11,6 @@ Nix was designed to perform a fast recon in a host. The things that it does are 
     
    ```HUNTER_API = your_generated_api_token_here```
 
-Besides that, I will implement it to be able to look for some vulnerabilities such as:
-
-    1. Subdomain Takeover (subtakeover.sh);
-    2. SQL Injection;
-    3. XSS;
-    4. IDOR (maybe, still thinking about it :P); and
-    5. Git Exposed.
-
 Usage:
 
 1. Cloning the repo:
@@ -27,9 +19,13 @@ Usage:
 
 2. Example:
 
-```./nix.py host port wordlist```
+Banner Grabbing:
 
-```./nix.py target.com 21 endpoints.txt```
+![image](https://github.com/0xn4d/nix/assets/85083396/8fc3d26a-434e-4221-9b40-95384190d6d7)
+
+Hunter's Hunt (don't forget to create your own .env file and set the "HUNTER_API" variable there:
+
+![image](https://github.com/0xn4d/nix/assets/85083396/8e39df4a-16fe-4b2b-9c5d-d0f98699b75d)
 
 #
 
