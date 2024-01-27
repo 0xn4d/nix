@@ -1,4 +1,4 @@
-# nix - a good folder to use in certifications exams
+# nix - a good folder to use in certifications exams (pretty basic tho)
 
 ### nix.py
 
