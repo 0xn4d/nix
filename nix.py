@@ -2,7 +2,6 @@
 
 import requests
 import json
-import sys
 import os
 import socket
 import pyfiglet
@@ -121,6 +120,15 @@ def hunterAPI():
 	except:
 		print('')
 		print(Fore.RED + '[ERROR] Not able to perform the Hunter search.')
+
+# -------------------------------------------------------------------------------
+
+# XSS
+
+def validate_xss():
+	xss_payload = "<img src='x' onerror='alert(\"XSS Test\");'>"
+
+	response = requests.post(target, data={"test": xss_payload})
   
 # uso da função mainf
 if __name__ == "__main__":
@@ -163,13 +171,3 @@ if __name__ == "__main__":
 	if args.hunter:
 		hunterAPI()
 		print('')
-
-# -------------------------------------------------------------------------------
-
-# SQL Injection
-
-
-# XSS Injection
-
-
-# Git Exposed
