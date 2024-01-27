@@ -22,7 +22,6 @@ def banner():
 	print('')
 	print('======== The all-in-one script ツ ========')
 	print('')
-	print('')
 
 # banner Grabbing
 def bannerGrabbing():
@@ -70,11 +69,11 @@ def dirFinder():
 				fullUrl = target + '/' + line
 				response = requests.get(f'https://{fullUrl}', verify=False)
 				if response.status_code == 200:
-					print(Fore.GREEN + f'[FOUND] {fullUrl}')
+					print(Fore.GREEN + f'[FOUND] https://{fullUrl}')
 				elif response.status_code == 403:
-					print(Fore.YELLOW + f'[FORBIDDEN] {fullUrl}')
+					print(Fore.YELLOW + f'[FORBIDDEN] https://{fullUrl}')
 				elif response.status_code == 503:
-					print(Fore.RED + f'[SERVICE ISSUE] {fullUrl}')
+					print(Fore.RED + f'[SERVICE ISSUE] https://{fullUrl}')
 		except:
 			pass
 	else:
