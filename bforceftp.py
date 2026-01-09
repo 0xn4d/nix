@@ -3,7 +3,7 @@
 import socket
 import sys
 import re
-#a
+
 if len(sys.argv) < 4:
 	print('')
 	print('Usage: python3 bforceftp.py <target> <user> <passwd-file.txt>')
