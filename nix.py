@@ -99,36 +99,7 @@ def subdomainFinder():
 				print(Fore.RED + f'[FORBIDDEN] {fullSubUrl}')
 			elif res.status_code == 404:
 				print(Fore.YELLOW + f'[NOT FOUND] {fullSubUrl}')
-		except requests.exceptions.ConnectionError:
-			print(Fore.RED + "Connection error.")
-			#print(Fore.RED + '[ERROR] Something went wrong while reaching the target.')
-			pass
-
-# Implement the Hunter API key - get possible email addresses related to the domain
-def hunterAPI():
-	print(Fore.BLUE + '[INFO] Performing a email address search using Hunter API.')
-    
-	HUNTER_API = os.getenv('HUNTER_API')
-
-	hunterUrl = f'https://api.hunter.io/v2/domain-search?domain={target}&api_key={HUNTER_API}'
-	
-	try:
-		response = requests.get(hunterUrl, verify=False)
-		resjson = response.json()
-		print(json.dumps(resjson, indent=4))
-	except:
-		print('')
-		print(Fore.RED + '[ERROR] Not able to perform the Hunter search.')
-  
-# uso da função mainf
-if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description="Recon Automation.")
-	parser.add_argument("-t", "--target", help="Your target.")
-	parser.add_argument("-p", "--port", help="Port to perform the banner grabbing.")
-	parser.add_argument("-w", "--wordlist", help="Wordlist to use.")
-	parser.add_argument("-ps", "--port-scan", help="If active, it performs a port scan in range 1,65535.", action='store_true')
-	parser.add_argument("-ds", "--dir-search", help="If active, it performs a directory search using the given wordlist.", action='store_true')
-	parser.add_argument("-sf", "--subdomain-finder", help="If active, it performs a subdomain search.", action='store_true')
+        response = requests.get(hunterUrl, verify=True)
 	parser.add_argument("-ht", "--hunter", help="Do not forget to put your API key in the .env file. If active, it performs a Hunter.io search and give the results back in a json format.", action='store_true')
 	args = parser.parse_args()
 
