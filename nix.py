@@ -67,7 +67,7 @@ def dirFinder():
 			for line in file:
 				line = line.strip('\n')
 				fullUrl = target + '/' + line
-				response = requests.get(f'https://{fullUrl}', verify=False)
+				response = requests.get(f'https://{fullUrl}')
 				if response.status_code == 200:
 					print(Fore.GREEN + f'[FOUND] https://{fullUrl}')
 				elif response.status_code == 403:
