@@ -92,7 +92,7 @@ def subdomainFinder():
 		fullSubUrl = f'https://{subdomain}.{target}/'  
   
 		try:
-			res = requests.get(fullSubUrl, verify=False)
+			res = requests.get(fullSubUrl)
 			if res.status_code == 200:
 				print(Fore.GREEN + f'[FOUND] {fullSubUrl}')
 			elif res.status_code == 403:
