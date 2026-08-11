@@ -113,7 +113,7 @@ def hunterAPI():
 	hunterUrl = f'https://api.hunter.io/v2/domain-search?domain={target}&api_key={HUNTER_API}'
 	
 	try:
-		response = requests.get(hunterUrl, verify=False)
+		response = requests.get(hunterUrl)
 		resjson = response.json()
 		print(json.dumps(resjson, indent=4))
 	except:
