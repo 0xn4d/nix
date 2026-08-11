@@ -60,7 +60,7 @@ def portScanning():
 # DIR finder
 def dirFinder():
 	print(Fore.BLUE + f'[INFO] Performing bruteforce to find directories in {target}:\n')
-	res = requests.get(f'https://{target}', verify=False)
+	res = requests.get(f'https://{target}')
 	if res.status_code == 200:
 		file = open(wordlist, 'r')
 		try:
